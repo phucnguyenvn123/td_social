@@ -9,6 +9,8 @@
 
 ## Command remembers
 
+### Lesson 9
+
 - Open terminal command windows: Ctrl + `
 - npm init or yarn init
 - git init
@@ -19,3 +21,7 @@
 - git config --global core.editor vim
 - git remote add origin https://github.com/phucnguyenvn123/td_social.git
 - git push -u origin master
+
+### Lesson 10
+
+- tsc --init
