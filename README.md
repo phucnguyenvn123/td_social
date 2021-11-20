@@ -18,3 +18,4 @@
 - git config --global user.email ds.phuc2019@gmail.com
 - git config --global core.editor vim
 - git remote add origin https://github.com/phucnguyenvn123/td_social.git
+- git push -u origin master
