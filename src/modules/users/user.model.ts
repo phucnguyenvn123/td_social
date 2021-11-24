@@ -23,7 +23,7 @@ const UserSchema = new mongoose.Schema({
   date: {
       type: Date,
       default: Date.now,
-  }
+  },
 });
 
 export default mongoose.model<IUser & mongoose.Document>("user", UserSchema);
