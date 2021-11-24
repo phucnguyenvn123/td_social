@@ -20,7 +20,7 @@ class UserService {
       throw new HttpException(409, `Your email ${model.email} already exist.`);
     }
 
-    const avatar = gravatar.url(model.email, {
+    const avatar = gravatar.url(model.email!, {
       size: "200",
       rating: "g",
       default: "mm",
@@ -28,9 +28,9 @@ class UserService {
 
     const salt = await bcryptjs.genSalt(10);
 
-    const hashedPassword = bcryptjs.hash(model.password, salt);
+    const hashedPassword = await bcryptjs.hash(model.password!, salt);
 
-    const createdUser: IUser = await this.userSchema.create({
+    const createdUser = await this.userSchema.create({
       ...model,
       password: hashedPassword,
       avatar: avatar,
@@ -42,7 +42,7 @@ class UserService {
   private createToken(user: IUser): TokenData {
     const dataInToken: DataStoredInToken = { id: user._id };
     const secret: string = process.env.JWT_TOKEN_SECRET!;
-    const expiredIn: number = 3600;
+    const expiredIn: number = 60;
     return {
       token: jwt.sign(dataInToken, secret, { expiresIn: expiredIn }),
     };
